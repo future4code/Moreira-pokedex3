@@ -10,32 +10,36 @@ const Main = styled.div`
   background-image: url(${background}) ;
   background-size: cover ;
   min-height: 100vh ;
-  min-width: 100vh ;
 `
 
 const Logo = styled.div`
-  height: 250px ;
+  margin-left: auto ;
+  margin-right: auto ;
+  height: 28.5vh ;
+  width: 45%;
   display: flex;
-  justify-content: center
+  justify-content: center;
 `
 
 const ImgLogo = styled.img`
-  height: 550px ;
-  margin-top: -100px ;
+  width: 100% ;
+  padding: 10px ;
 `
 
 const Person = styled.div`
-  bottom: 5px ;
+  margin-right: 2px ;
+  margin-bottom: -10px ;
 `
 
 const ImgPerson = styled.img`
-  height: 600px ;
-  margin-bottom: -5px ;
+  width: 100% ;
+  height: 65vh ;
 `
 
 const Container = styled.div`
+  width: 100% ;
   display: flex ;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   position: fixed ;
   bottom: 0px ;
@@ -44,22 +48,19 @@ const Container = styled.div`
 const DivButton = styled.div`
   display: flex ;
   justify-content: center;
-  width: 95vh ;
+  width: 50.1% ;
+  height: 10vh ;
 `
 
 const Button = styled.button`
-  margin-right: 150px ;
-  height: 80px ;
-  width: 300px ;
-  font-size: 22px;
-  color: #1E82DE ;
+  width: 32%;
   display: flex ;
   align-items: center;
   justify-content: center ;
-  font-weight: bold ;
   border-radius: 15px ;
   border: 0px ;
   background-color: white ;
+  white-space: normal !important;
   :hover{
     cursor: pointer;
     transform: scale(1.05);
@@ -68,7 +69,11 @@ const Button = styled.button`
 `
 
 const PButton = styled.p`
-  margin-right: 30px ;
+  margin-right: 10% ;
+  font-size: 22px;
+  font-weight: bold ;
+  color: #1E82DE ;
+  
 `
 
 const Home = () => {
