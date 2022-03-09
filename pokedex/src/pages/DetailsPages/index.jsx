@@ -10,44 +10,44 @@ const Main = styled.div`
 const Container = styled.div`
   display: flex ;
   justify-content: center;
-  margin-top: 8vh;
-  justify-content: space-evenly;
-  
+  margin-top: 4%;
+  justify-content: space-evenly 
 `
 
 const CardLeft = styled.div`
-  width: 380px;
-	height: 340px;
+  width: 19.8%;
+  height: 36.6vh;
 	background: #1E82DE;
 	transform: perspective(300px) rotateY(25deg);
-  margin-top: 9.3vh ;
+  margin-top: 4.1% ;
   border-radius: 10px ;
+  
 `
 
 const CardCenter = styled.div`
-  width: 550px;
-	height: 550px;
+  width: 28.8%;
+  height: 57vh;
 	border-radius: 25px;
 	background-image: url(${background});
-  margin-top: 2vh ;
+  margin-top: 1% ;
 `
 
 const CardRight = styled.div`
-  width: 380px;
-	height: 340px;
+  width: 19.8%;
+	height: 36.6vh;
 	background: #1E82DE;
 	transform: perspective(300px) rotateY(-25deg);
-  margin-top: 8.3vh ;
+  margin-top: 4.1% ;
   border-radius: 10px ;
 `
 
 const CardBotton = styled.div`
-  width: 64vw ;
-  height: 180px ;
+  width: 64% ;
+  height: 19vh ;
   background: #1E82DE;
   margin-left: auto ;
   margin-right: auto ;
-  margin-top: 10vh ;
+  margin-top: 5% ;
   border-radius: 10px ;
   display: flex ;
   justify-content: space-around;
@@ -56,8 +56,8 @@ const CardBotton = styled.div`
 
 const DivCard2 = styled.div`
   border: 2px solid red;
-  height: 110px ;
-  width: 150px ;
+  height: 12vh;
+  width: 12.5% ;
 `
 
 function DetailsPages() {
