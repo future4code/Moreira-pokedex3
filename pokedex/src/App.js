@@ -1,12 +1,16 @@
 import React from "react";
 import RoutesApp from './routes'
 import { GlobalStyled } from "./GlobalStyled";
+import GlobalState from "./context/GlobalContext/GlobalState";
 
 function App() {
   return (
     <>
-    <GlobalStyled/>
-    <RoutesApp />
+    <GlobalState>
+      <GlobalStyled/>
+      <RoutesApp />
+    </GlobalState>
+   
     </>
   );
 }
