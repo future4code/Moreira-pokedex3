@@ -14,14 +14,15 @@ const Main = styled.div`
 `
 
 const Logo = styled.div`
-  height: 250px ;
+  height: 27vh;
   display: flex;
-  justify-content: center
+  justify-content: center;
 `
 
 const ImgLogo = styled.img`
-  height: 550px ;
-  margin-top: -100px ;
+  height: 58vh ;
+  margin-top: -10.2vh ;
+  
 `
 
 const Person = styled.div`
@@ -29,7 +30,7 @@ const Person = styled.div`
 `
 
 const ImgPerson = styled.img`
-  height: 600px ;
+  height: 64vh ;
   margin-bottom: -5px ;
 `
 
@@ -48,10 +49,10 @@ const DivButton = styled.div`
 `
 
 const Button = styled.button`
-  margin-right: 150px ;
-  height: 80px ;
-  width: 300px ;
-  font-size: 22px;
+  margin-right: 17% ;
+  height: 8.5vh ;
+  width: 33.5% ;
+  font-size: 140%;
   color: #1E82DE ;
   display: flex ;
   align-items: center;
@@ -68,7 +69,7 @@ const Button = styled.button`
 `
 
 const PButton = styled.p`
-  margin-right: 30px ;
+  margin-right: 10% ;
 `
 
 const Home = () => {
