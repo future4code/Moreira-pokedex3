@@ -8,7 +8,7 @@ const GlobalState = (props) => {
 
     useEffect(() => {
        
-           axios.get('https://pokeapi.co/api/v2/pokemon?limit=20')
+           axios.get('https://pokeapi.co/api/v2/pokemon?limit=120')
            .then(response => 
             pokemonData(response.data.results),
             )

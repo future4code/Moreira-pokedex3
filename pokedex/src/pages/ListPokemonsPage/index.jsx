@@ -12,8 +12,6 @@ function ListPokemonsPage() {
 
   const history = useNavigate()
   
-  
-
   return (
     <>
       <HeaderList />
@@ -25,7 +23,7 @@ function ListPokemonsPage() {
                 <img src={res.image} alt={res.name} style={{width: '50%'}}/>
               <div>
                 <Button>Adicionar</Button>
-                <Button onClick={() => history('/details_pages')}>Detalhes</Button>
+                <Button onClick={() => { history(`/details_pages/${res.name}`)}}>Detalhes</Button>
               </div>
             </Card>))
         }
