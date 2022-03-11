@@ -1,89 +1,157 @@
-import React from 'react';
-import styled from 'styled-components'
-import background from '../../assets/background.svg'
-
-
-const Main = styled.div`
-
-`
-
-const Container = styled.div`
-  display: flex ;
-  justify-content: center;
-  margin-top: 4%;
-  justify-content: space-evenly 
-`
-
-const CardLeft = styled.div`
-  width: 19.8%;
-  height: 36.6vh;
-	background: #1E82DE;
-	transform: perspective(300px) rotateY(25deg);
-  margin-top: 4.1% ;
-  border-radius: 10px ;
-  
-`
-
-const CardCenter = styled.div`
-  width: 28.8%;
-  height: 57vh;
-	border-radius: 25px;
-	background-image: url(${background});
-  margin-top: 1% ;
-`
-
-const CardRight = styled.div`
-  width: 19.8%;
-	height: 36.6vh;
-	background: #1E82DE;
-	transform: perspective(300px) rotateY(-25deg);
-  margin-top: 4.1% ;
-  border-radius: 10px ;
-`
-
-const CardBotton = styled.div`
-  width: 64% ;
-  height: 19vh ;
-  background: #1E82DE;
-  margin-left: auto ;
-  margin-right: auto ;
-  margin-top: 5% ;
-  border-radius: 10px ;
-  display: flex ;
-  justify-content: space-around;
-  align-items: center;
-`
-
-const DivCard2 = styled.div`
-  border: 2px solid red;
-  height: 12vh;
-  width: 12.5% ;
-`
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import HeaderDetails from '../../components/HeaderDetails';
+import GlobalStateContext from '../../context/GlobalContext/GlobalStateContext';
+import { CardBotton, CardCenter, ID, Name, CardLeft, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCard2, DivCardCenter } from './styeld';
+import { Progress } from 'antd';
+import RadarChart from 'react-svg-radar-chart';
+import 'react-svg-radar-chart/build/css/index.css'
 
 function DetailsPages() {
+
+  const pokemons = useContext(GlobalStateContext)
+
+  const { name } = useParams()
+
+  const PokemonDetails = () => {
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+  }
+    
+  const addZeroes = ( num, len) => {
+    var numberWithZeroes = String(num);
+    var counter = numberWithZeroes.length;
+      
+  while(counter < len) {
+  
+      numberWithZeroes = "0" + numberWithZeroes;
+    
+    counter++;
+  
+    }
+  
+  return numberWithZeroes;
+}
+
+  useEffect(() => {
+    PokemonDetails()
+  }, [])
+
+  const teste = () => {
+    
+  }
+
+  const value1 = 47/100
+
+  const data = [
+    {
+      data: {
+        HP:0.2,
+        Attack: value1,
+        Defense: 0.4,
+        Special_Attack: 0.3,
+        Special_Defense: 0.6,
+        Speed: 0.9
+      },
+      meta: { class: "color-red"},
+    }    
+  ];
+
+const captions = {
+    HP: 'HP',
+    Attack: 'Attack',
+    Defense: 'Defense',
+    Special_Attack: 'Special Attack',
+    Special_Defense: 'Special Defense',
+    Speed: 'Speed'
+    
+  };
+
   return (
-    <Main>
-    <Container>
-      <CardLeft>  
+    <div>
+      <HeaderDetails />
+      <Container>
+        <CardLeft>
+        {pokemons.map((pokemon) => {
+      if(name === pokemon.name){
+        return <DivStats key={pokemon.id}>
+          <TittleStats>Tamanho</TittleStats>
+        <Stats>{pokemon.weight/10}kg</Stats>
+        <Stats>{pokemon.height/10}m</Stats>
+        <TittleStats>Habilidade</TittleStats>
+        <DivStats>{pokemon.abilities.map((pokemon) => {
+          return  <Stats key={pokemon.ability.name}>{pokemon.ability.name[0].toUpperCase() + pokemon.ability.name.slice(1)}</Stats>
+        })}</DivStats>
+         <TittleStats>Tipo</TittleStats>
+        <DivStats>{pokemon.types.map((pokemon) => {
+          return <Stats  key={pokemon.type.name}>  {pokemon.type.name[0].toUpperCase() + pokemon.type.name.slice(1)}</Stats>
+        })}</DivStats>
+    
+        </DivStats>
+        
+      }
+    })}
+        </CardLeft>
+        <CardCenter>
 
-      </CardLeft>
-      <CardCenter>
+     {pokemons.map((pokemon) => {
+      if(name === pokemon.name){
+        return <DivCardCenter key={pokemon.id}>
+        <ID>#{addZeroes(pokemon.id, 3)}</ID>
+        <PokeImg src={pokemon.image} alt={pokemon.name} />
+        <Name>{pokemon.name.toUpperCase()}</Name>
+        
+        
+        </DivCardCenter>  
+      }
+    })}
+        </CardCenter>
+        
+        <CardRight>
+        
+    <RadarChart
+    captions={captions}
+    data={data}
+    size={350}
+  />
+        
+        </CardRight>
+      </Container>
+      <CardBotton>
 
-      </CardCenter>
-      <CardRight>
+        <DivCard2>
+        {pokemons.map((pokemon) => {
+      if(name === pokemon.name){
+        return <DivStats key={pokemon.id}>
 
-      </CardRight>
-    </Container>
-    <CardBotton>
-      <DivCard2>
-      </DivCard2>
-      <DivCard2>
-      </DivCard2>
-      <DivCard2>
-      </DivCard2>
-    </CardBotton>
-  </Main>
+        <DivStats>{pokemon.stats.map((pokemon) => {
+          return  <Stats>{pokemon.base_stat}</Stats>
+        })}</DivStats>
+        </DivStats>
+        
+      }
+    })}
+        </DivCard2>
+        <DivCard2>
+        </DivCard2>
+        <DivCard2>
+        </DivCard2>
+      </CardBotton>
+    </div>
   );
 }
 
 export default DetailsPages;
+
+
+ {/* {detailPokemon.map((pok) => {
+          if(name === pok.name){
+            return (<p></p> {pok.image} alt={pok.name} style={{width: '50%'}} /> )
+          }
+    })} <span><Progress percent={pokemon.base_stat} steps={3} /> </span>*/}
