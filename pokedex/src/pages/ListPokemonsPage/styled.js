@@ -18,7 +18,7 @@ export const Card = styled.div`
     margin: 10px;
     border-radius: 10px;
     padding: 10px;
-    color: #FFFFFF;
+    color: #FFCB04;
     font-weight: bold;
 
     display: flex;
@@ -33,4 +33,8 @@ export const Button = styled.button`
     border-radius: 6px;
     margin: 4px;
     cursor: pointer;
+    color: #FFCB04;
+    font-weight: bold;
+    background-color: #3274EA;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 `
