@@ -55,7 +55,6 @@ export const Button = styled.button`
   border-radius: 15px ;
   border: 0px ;
   background-color: white ;
-  white-space: normal !important;
   :hover{
     cursor: pointer;
     transform: scale(1.05);
@@ -65,6 +64,8 @@ export const Button = styled.button`
 
 export const PButton = styled.p`
   margin-right: 10% ;
+  margin-top: auto;
+  margin-bottom: auto;
   font-size: 22px;
   font-weight: bold ;
   color: #1E82DE ;
