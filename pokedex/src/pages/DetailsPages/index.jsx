@@ -140,18 +140,9 @@ const captions = {
         </DivCard2>
         <DivCard2>
         </DivCard2>
-        <DivCard2>
-        </DivCard2>
       </CardBotton>
     </div>
   );
 }
 
 export default DetailsPages;
-
-
- {/* {detailPokemon.map((pok) => {
-          if(name === pok.name){
-            return (<p></p> {pok.image} alt={pok.name} style={{width: '50%'}} /> )
-          }
-    })} <span><Progress percent={pokemon.base_stat} steps={3} /> </span>*/}
