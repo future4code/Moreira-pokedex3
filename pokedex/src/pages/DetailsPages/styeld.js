@@ -89,7 +89,7 @@ export const CardRight = styled.div`
   width: 19.8%;
 	height: 50vh;
 	background: #1E82DE;
-	/* transform: perspective(300px) rotateY(-25deg); */
+	transform: perspective(300px) rotateY(-25deg);
   margin-top: 1.8% ;
   border-radius: 10px ;
   transition: all 1s ease 0s;

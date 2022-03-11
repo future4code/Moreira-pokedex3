@@ -10,7 +10,7 @@ import 'react-svg-radar-chart/build/css/index.css'
 
 function DetailsPages() {
 
-  const pokemons = useContext(GlobalStateContext)
+  const [pokemons] = useContext(GlobalStateContext)
 
   const { name } = useParams()
 
@@ -43,23 +43,35 @@ function DetailsPages() {
     PokemonDetails()
   }, [])
 
-  const teste = () => {
-    
-  }
 
-  const value1 = 47/100
+  const teste = pokemons.filter((teste2) => {
+    return name === teste2.name
+  })
+
+  console.log('aqui', teste[0])
+
+  const HP = teste[0]?.stats[0].base_stat/125
+  const Attack = teste[0]?.stats[1].base_stat/125
+  const Defense = teste[0]?.stats[2].base_stat/125
+  const Special_Attack = teste[0]?.stats[3].base_stat/125
+  const Special_Defense = teste[0]?.stats[4].base_stat/125
+  const Speed = teste[0]?.stats[5].base_stat/125 
+  
+ 
+
+  
 
   const data = [
     {
       data: {
-        HP:0.2,
-        Attack: value1,
-        Defense: 0.4,
-        Special_Attack: 0.3,
-        Special_Defense: 0.6,
-        Speed: 0.9
+        HP,
+        Attack,
+        Defense,
+        Special_Attack,
+        Special_Defense,
+        Speed
       },
-      meta: { class: "color-red"},
+      meta: { color: "red"},
     }    
   ];
 
@@ -126,17 +138,17 @@ const captions = {
       <CardBotton>
 
         <DivCard2>
-        {pokemons.map((pokemon) => {
+        {/* {pokemons.map((pokemon) => {
       if(name === pokemon.name){
         return <DivStats key={pokemon.id}>
 
-        <DivStats>{pokemon.stats.map((pokemon) => {
+        <DivStats>{pokemon.stats((pokemon) => {
           return  <Stats>{pokemon.base_stat}</Stats>
         })}</DivStats>
         </DivStats>
         
       }
-    })}
+    })} */}
         </DivCard2>
         <DivCard2>
         </DivCard2>
