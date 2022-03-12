@@ -10,7 +10,7 @@ import 'react-svg-radar-chart/build/css/index.css'
 
 function DetailsPages() {
 
-  const [pokemons] = useContext(GlobalStateContext)
+  const {pokemons} = useContext(GlobalStateContext)
 
   const { name } = useParams()
 

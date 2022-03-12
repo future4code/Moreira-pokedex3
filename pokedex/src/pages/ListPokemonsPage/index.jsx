@@ -1,9 +1,7 @@
 import React, {useState,useContext} from 'react';
 import HeaderList from '../../components/HeaderList'
 import GlobalStateContext from "../../context/GlobalContext/GlobalStateContext"
-
 import { useNavigate } from 'react-router-dom'
-
 import { Container, Card, Button } from './styled'
 
 function ListPokemonsPage() {

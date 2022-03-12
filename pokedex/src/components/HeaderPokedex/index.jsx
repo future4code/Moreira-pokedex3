@@ -11,7 +11,7 @@ const HeaderPokedex = () => {
     <>  
     <Container> 
     <Img src={Logo} alt="logo"/>
-    <Button onClick={() => history('/list_pokemons')}>VOLTAR PARA A LISTA DE POKEMONS</Button>
+    <Button onClick={() => history('/list_pokemons')}>VOLTAR</Button>
     </Container>    
     </>
   )
