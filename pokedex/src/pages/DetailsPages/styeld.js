@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 
 export const CardLeft = styled.div`
-  width: 19.8%;
+  width: 22%;
   height: 50vh;
 	background: #1E82DE;
 	transform: perspective(300px) rotateY(25deg);
@@ -23,7 +23,6 @@ export const CardLeft = styled.div`
     transform: perspective(300px) rotateY(0deg);
     transition: all 0.8s ease 0s;
   }
-  
 `
 
 export const DivCardCenter = styled.div`
@@ -36,6 +35,14 @@ export const DivCardCenter = styled.div`
 
 export const DivStats = styled.div`
   text-align: center;
+  //border: 2px solid red;
+  margin-top: -12%;
+`
+
+export const DivMain = styled.div`
+  //border: 2px solid black;
+  max-height: 90%;
+  margin-top: -8%;
 `
 
 export const TittleStats = styled.h3`
@@ -43,12 +50,14 @@ export const TittleStats = styled.h3`
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.4em;
+ // border: 2px solid yellow;
 `
 
 export const Stats = styled.p`
   color: white;
   font-weight: bold;
   font-size: 1.3em;
+  //border: 2px solid green;
 `
 
 export const ID = styled.p`
@@ -86,7 +95,7 @@ export const CardCenter = styled.div`
 `
 
 export const CardRight = styled.div`
-  width: 19.8%;
+  width: 22%;
 	height: 50vh;
 	background: #1E82DE;
 	transform: perspective(300px) rotateY(-25deg);
@@ -101,23 +110,5 @@ export const CardRight = styled.div`
     transform: perspective(300px) rotateY(0deg);
     transition: all 0.8s ease 0s;
   }
-`
-
-export const CardBotton = styled.div`
-  width: 64% ;
-  height: 19vh ;
-  background: #1E82DE;
-  margin-left: auto ;
-  margin-right: auto ;
-  margin-top: 2% ;
-  border-radius: 10px ;
-  display: flex ;
-  justify-content: space-around;
-  align-items: center;
-`
-
-export const DivCard2 = styled.div`
-  border: 2px solid red;
-  height: 12vh;
-  width: 12.5% ;
+  
 `
