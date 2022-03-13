@@ -85,7 +85,7 @@ const captions = {
   const options = {
     captionProps: () => ({
       textAnchor: 'middle',
-      fontSize: 14,
+      fontSize: 13.8,
       fontWeight: 'bold',
       fontFamily: 'sans-serif',
       fill: 'black'
