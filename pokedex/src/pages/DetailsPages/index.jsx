@@ -3,10 +3,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderDetails from '../../components/HeaderDetails';
 import GlobalStateContext from '../../context/GlobalContext/GlobalStateContext';
-import { CardBotton, CardCenter, ID, Name, CardLeft, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCard2, DivCardCenter } from './styeld';
-import { Progress } from 'antd';
+import { CardCenter, ID, Name, CardLeft, DivMain, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCardCenter } from './styeld';
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
+
+
 
 function DetailsPages() {
 
@@ -56,10 +57,6 @@ function DetailsPages() {
   const Special_Attack = teste[0]?.stats[3].base_stat/125
   const Special_Defense = teste[0]?.stats[4].base_stat/125
   const Speed = teste[0]?.stats[5].base_stat/125 
-  
- 
-
-  
 
   const data = [
     {
@@ -71,19 +68,30 @@ function DetailsPages() {
         Special_Defense,
         Speed
       },
-      meta: { color: "red"},
+      meta: { color: "#E2BB25"},
     }    
   ];
 
 const captions = {
-    HP: 'HP',
-    Attack: 'Attack',
+    Special_Attack: 'Ataque Especial',
+    Attack: 'Ataque',
     Defense: 'Defense',
-    Special_Attack: 'Special Attack',
-    Special_Defense: 'Special Defense',
-    Speed: 'Speed'
+    Special_Defense: 'Defesa Especial',
+    Speed: 'Velocidade',
+    HP: 'Vida'
     
   };
+
+  const options = {
+    captionProps: () => ({
+      textAnchor: 'middle',
+      fontSize: 14,
+      fontWeight: 'bold',
+      fontFamily: 'sans-serif',
+      fill: 'black'
+    }),
+    scaleProps:() => ({ className:'scale', fill:'black' })
+  }
 
   return (
     <div>
@@ -92,7 +100,8 @@ const captions = {
         <CardLeft>
         {pokemons.map((pokemon) => {
       if(name === pokemon.name){
-        return <DivStats key={pokemon.id}>
+        return <DivMain>
+        <DivStats key={pokemon.id}>
           <TittleStats>Tamanho</TittleStats>
         <Stats>{pokemon.weight/10}kg</Stats>
         <Stats>{pokemon.height/10}m</Stats>
@@ -106,7 +115,7 @@ const captions = {
         })}</DivStats>
     
         </DivStats>
-        
+        </DivMain>
       }
     })}
         </CardLeft>
@@ -127,32 +136,16 @@ const captions = {
         
         <CardRight>
         
-    <RadarChart
+    <RadarChart className='shape'
     captions={captions}
     data={data}
-    size={350}
+    size={400}
+    options={options}
   />
         
         </CardRight>
       </Container>
-      <CardBotton>
-
-        <DivCard2>
-        {/* {pokemons.map((pokemon) => {
-      if(name === pokemon.name){
-        return <DivStats key={pokemon.id}>
-
-        <DivStats>{pokemon.stats((pokemon) => {
-          return  <Stats>{pokemon.base_stat}</Stats>
-        })}</DivStats>
-        </DivStats>
-        
-      }
-    })} */}
-        </DivCard2>
-        <DivCard2>
-        </DivCard2>
-      </CardBotton>
+      
     </div>
   );
 }
