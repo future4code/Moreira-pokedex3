@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderDetails from '../../components/HeaderDetails';
 import GlobalStateContext from '../../context/GlobalContext/GlobalStateContext';
-import { CardCenter, ID, Name, CardLeft, DivMain, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCardCenter } from './styeld';
+import { CardCenter, ID, Name, DivId, DivName, CardLeft, DivMain, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCardCenter } from './styeld';
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
 
@@ -14,16 +14,6 @@ function DetailsPages() {
   const [pokemons] = useContext(GlobalStateContext)
 
   const { name } = useParams()
-
-  const PokemonDetails = () => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err) => {
-        console.log(err.response)
-      })
-  }
     
   const addZeroes = ( num, len) => {
     var numberWithZeroes = String(num);
@@ -40,16 +30,9 @@ function DetailsPages() {
   return numberWithZeroes;
 }
 
-  useEffect(() => {
-    PokemonDetails()
-  }, [])
-
-
   const teste = pokemons.filter((teste2) => {
     return name === teste2.name
   })
-
-  console.log('aqui', teste[0])
 
   const HP = teste[0]?.stats[0].base_stat/125
   const Attack = teste[0]?.stats[1].base_stat/125
@@ -124,9 +107,9 @@ const captions = {
      {pokemons.map((pokemon) => {
       if(name === pokemon.name){
         return <DivCardCenter key={pokemon.id}>
-        <ID>#{addZeroes(pokemon.id, 3)}</ID>
+        <DivId><ID>#{addZeroes(pokemon.id, 3)}</ID></DivId>
         <PokeImg src={pokemon.image} alt={pokemon.name} />
-        <Name>{pokemon.name.toUpperCase()}</Name>
+        <DivName><Name>{pokemon.name.toUpperCase()}</Name></DivName>
         
         
         </DivCardCenter>  
