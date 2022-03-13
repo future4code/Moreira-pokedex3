@@ -2,10 +2,11 @@ import React, {useState,useContext} from 'react';
 import HeaderList from '../../components/HeaderList'
 import GlobalStateContext from "../../context/GlobalContext/GlobalStateContext"
 import { useNavigate } from 'react-router-dom'
-import { Container, Card, Button } from './styled'
+import {Container, ContainerCard, Card, Button } from './styled'
+import { Pagination, List } from 'antd'
 
 function ListPokemonsPage() {
-  const {pokemons, setPokemons, pokedex, setPokedex, paginacao, setPaginacao, pokemonList, setPokemonList}=useContext(GlobalStateContext)
+  const {pokemons, setPokemons, pokedex, setPokedex, pagination, setPagination, pokemonList, setPokemonList}=useContext(GlobalStateContext)
 
   const history = useNavigate()
 
@@ -26,16 +27,28 @@ function ListPokemonsPage() {
       })
       setPokemons(newPokemonList)
       localStorage.setItem('pokedex', JSON.stringify(pokemonList))
-      localStorage.setItem('pokemons', JSON.stringify(pokemons))
     }
 
 })
+console.log(pagination)
   return (
     <>
-      <HeaderList />
-      <Container>
-        {
-          pokemons.map(res => (
+    <Container>
+      <HeaderList /> 
+      <ContainerCard>
+      <List
+        grid={{ gutter: 16, column: 4, 
+          xs: 1,
+          sm: 2,
+          md: 4,
+          lg: 4,
+          xl: 6,
+          xxl: 3,}}
+      pagination={{
+        pageSize: 20,
+      }}
+      dataSource={pokemons}
+      renderItem={res => (
             <Card key={res.id}>
                 <p>{res.name[0].toUpperCase() + res.name.slice(1)}</p>
                 <img src={res.image} alt={res.name} style={{width: '50%'}}/>
@@ -43,9 +56,14 @@ function ListPokemonsPage() {
                 <Button onClick={() => {onClickAdd(res)}}>Adicionar</Button>
                 <Button onClick={() => history(`/details_pages/${res.name}`)}>Detalhes</Button>
               </div>
-            </Card>))
-        }
-      </Container>
+            </Card>)
+          }
+        
+        >
+      
+      </List>
+      </ContainerCard> 
+      </Container>  
     </>
   );
 }

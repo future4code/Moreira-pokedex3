@@ -2,25 +2,25 @@ import styled from 'styled-components'
 import background from '../../assets/background.svg'
 
 export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+`
+export const ContainerCard = styled.div`
     margin: 50px auto;
     width: 90%;
-    height: 92vh;
-    grid-gap: 15px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 4fr));
-    
 `
 export const Card = styled.div`
     background-image: url(${background}) ;
     background-size: cover ;
-    height: auto ;
-    width: auto ;
+    height: 90% ;
+    width: 50% ;
     margin: 10px;
     border-radius: 10px;
     padding: 10px;
     color: #FFCB04;
     font-weight: bold;
-
     display: flex;
     flex-direction: column;
     align-items: center;
