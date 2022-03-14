@@ -14,11 +14,38 @@ export const Logo = styled.div`
   width: 45%;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 360px){
+    width: 90%;
+    height: 25vh;
+  }
+
+  @media screen and (max-width: 412px){
+    width: 90%;
+    height: 25vh;
+  }
+
+  @media screen and (max-width: 600px){
+    width: 90%;
+    height: 25vh;
+  }
+
+  @media screen and (max-width: 820px){
+    width: 90%;
+    height: 25vh;
+  }
+
+  @media screen and (max-width: 412px){
+    width: 80%;
+    height: 22vh;
+  }
+  
 `
 
 export const ImgLogo = styled.img`
   width: 100% ;
   padding: 10px ;
+
 `
 
 export const Person = styled.div`
@@ -29,6 +56,26 @@ export const Person = styled.div`
 export const ImgPerson = styled.img`
   width: 100% ;
   height: 65vh ;
+
+  @media screen and (max-width: 360px){
+    width: 100% ;
+    height: 45vh;
+  }
+
+  @media screen and (max-width: 412px){
+    width: 100%;
+    height: 45vh;
+  }
+
+  @media screen and (max-width: 600px){
+    width: 100%;
+    height: 45vh;
+  }
+
+  @media screen and (max-width: 820px){
+    width: 100%;
+    height: 45vh;
+  }
 `
 
 export const Container = styled.div`
@@ -38,6 +85,26 @@ export const Container = styled.div`
   align-items: center;
   position: fixed ;
   bottom: 0px ;
+
+  @media screen and (max-width: 360px){
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 412px){
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 600px){
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 820px){
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const DivButton = styled.div`
@@ -45,6 +112,26 @@ export const DivButton = styled.div`
   justify-content: center;
   width: 50.1% ;
   height: 10vh ;
+
+  @media screen and (max-width: 360px){
+    margin-bottom: 20%;
+    height: 8vh;
+  }
+
+  @media screen and (max-width: 412px){
+    margin-bottom: 20%;
+    height: 8vh;
+  }
+
+  @media screen and (max-width: 600px){
+    margin-bottom: 20%;
+    height: 8vh;
+  }
+
+  @media screen and (max-width: 820px){
+    margin-bottom: 20%;
+    height: 8vh;
+  }
 `
 
 export const Button = styled.button`
@@ -60,6 +147,23 @@ export const Button = styled.button`
     transform: scale(1.05);
     transition: all 0.5s ease 0s;
   }  
+
+  @media screen and (max-width: 360px){
+    width: 82%;
+  }
+
+  @media screen and (max-width: 412px){
+    width: 82%;
+  }
+
+  @media screen and (max-width: 600px){
+    width: 82%;
+  }
+  
+  @media screen and (max-width: 820px){
+    width: 62%;
+  }
+  
 `
 
 export const PButton = styled.p`
@@ -69,5 +173,28 @@ export const PButton = styled.p`
   font-size: 22px;
   font-weight: bold ;
   color: #1E82DE ;
-  
+
+  @media screen and (max-width: 360px){
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 960px){
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 600px){
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 375px){
+    font-size: 17px;
+  }
+
+  @media screen and (max-width: 820px){
+    font-size: 22px;
+  }
+
+  @media screen and (max-width: 412px){
+    font-size: 17px;
+  }
 `

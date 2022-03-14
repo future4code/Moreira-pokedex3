@@ -206,7 +206,7 @@ export const DivId = styled.div`
 
 export const PokeImg = styled.img`
   width: 70%;
-  height: 30vh;
+  max-height: 30vh;
   margin-top: -5%;
   margin-bottom: 2.5%;
 
