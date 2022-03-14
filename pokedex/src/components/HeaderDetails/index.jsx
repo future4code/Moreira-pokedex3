@@ -11,15 +11,9 @@ const HeaderDetails = () => {
   return (
     <>  
     <Container>           
-    <Button onClick={() => history(-1)}>VOLTAR </Button>
     <Img src={Logo} alt="logo"/>
+    <Button onClick={() => history(-1)}>VOLTAR </Button>
     <ContainerButtons>
-    <Button> 
-        ADICIONAR
-    </Button>
-    <Button> 
-        REMOVER
-    </Button>
     </ContainerButtons>
     </Container>    
     </>

@@ -33,7 +33,7 @@ function PokedexPage() {
     <>
       <HeaderPokedex />
       <Container>
-        {pokemonList.map((res) => (
+        {pokemonList.length > 0 ? (pokemonList.map((res) => (
           <Card key={res.id}>
             <p>{res.name[0].toUpperCase() + res.name.slice(1)}</p>
             <img src={res.image} alt={res.name} style={{ width: "50%" }} />
@@ -42,7 +42,8 @@ function PokedexPage() {
               <Button onClick={() => history(`/details_pages/${res.name}`)}>Detalhes</Button>
             </div>
           </Card>
-        ))
+        )))
+        :(<h2>Sua Pokedex está Vazia, inclua Pokemons!!</h2>)
         }
       </Container>
     </>
