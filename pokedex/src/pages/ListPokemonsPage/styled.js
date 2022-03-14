@@ -14,8 +14,7 @@ export const ContainerCard = styled.div`
 export const Card = styled.div`
     background-image: url(${background}) ;
     background-size: cover ;
-    height: 90% ;
-    width: 50% ;
+    min-height: 90%;
     margin: 10px;
     border-radius: 10px;
     padding: 10px;
@@ -25,6 +24,10 @@ export const Card = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    
+`
+export const Img = styled.img`
+    width: 50%;
     
 `
 export const Button = styled.button`

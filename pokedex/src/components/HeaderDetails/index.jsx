@@ -14,6 +14,7 @@ const HeaderDetails = () => {
     <Img src={Logo} alt="logo"/>
     <Button onClick={() => history(-1)}>VOLTAR </Button>
     <ContainerButtons>
+    <Button onClick={() => history('/pokedex_page')}>MEUS POKEMONS </Button>
     </ContainerButtons>
     </Container>    
     </>

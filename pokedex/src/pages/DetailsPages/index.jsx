@@ -3,27 +3,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderDetails from '../../components/HeaderDetails';
 import GlobalStateContext from '../../context/GlobalContext/GlobalStateContext';
-import { CardCenter, ID, Name, CardLeft, DivMain, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCardCenter } from './styeld';
+import { CardCenter, ID, Name, DivButton, Button, DivId, DivName, DivTittleStats, CardLeft, DivMain, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCardCenter } from './styeld';
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
-
+import HeaderList from '../../components/HeaderList'
 
 
 function DetailsPages() {
 
-  const {pokemons} = useContext(GlobalStateContext)
+  const {pokemons, pokemonList, setPokemonList, setPokemons} = useContext(GlobalStateContext)
+
+  console.log('esse', pokemonList)
 
   const { name } = useParams()
-
-  const PokemonDetails = () => {
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err) => {
-        console.log(err.response)
-      })
-  }
     
   const addZeroes = ( num, len) => {
     var numberWithZeroes = String(num);
@@ -40,16 +32,9 @@ function DetailsPages() {
   return numberWithZeroes;
 }
 
-  useEffect(() => {
-    PokemonDetails()
-  }, [])
-
-
   const teste = pokemons.filter((teste2) => {
     return name === teste2.name
   })
-
-  console.log('aqui', teste[0])
 
   const HP = teste[0]?.stats[0].base_stat/125
   const Attack = teste[0]?.stats[1].base_stat/125
@@ -93,60 +78,94 @@ const captions = {
     scaleProps:() => ({ className:'scale', fill:'black' })
   }
 
+  const onClickRemover = (res) => {
+    let index = pokemonList.findIndex(item => item.id === res)
+    if(index === -1){
+      const listaPokes = pokemonList
+      listaPokes.push(res)
+      setPokemonList(listaPokes)
+
+      const newPokemonList = pokemonList.filter((pokemon)=>{ //removendo da home
+        return pokemon.name !== res.name
+    })
+    setPokemonList(newPokemonList);
+    
+  };
+}
+
+const onClickAdd = ((pokeToAdd)=>{
+    
+  const index = pokemonList.findIndex((pokemon)=>{
+      return pokemon.name === pokeToAdd.name
+  })
+
+  if(index === -1){
+      const listaPokes = pokemonList
+      listaPokes.push(pokeToAdd)
+      setPokemonList(listaPokes)
+      console.log(pokemonList)
+
+      const newPokemonList = pokemons.filter((pokemon)=>{ //removendo da home
+        return pokemon.name !== pokeToAdd.name
+    })
+    setPokemons(newPokemonList)
+    localStorage.setItem('pokedex', JSON.stringify(pokemonList))
+  }
+
+})
+
   return (
-    <div>
+    <>
       <HeaderDetails />
       <Container>
         <CardLeft>
         {pokemons.map((pokemon) => {
-      if(name === pokemon.name){
+      if(name === pokemon.name ){
         return <DivMain>
-        <DivStats key={pokemon.id}>
-          <TittleStats>Tamanho</TittleStats>
-        <Stats>{pokemon.weight/10}kg</Stats>
-        <Stats>{pokemon.height/10}m</Stats>
-        <TittleStats>Habilidade</TittleStats>
-        <DivStats>{pokemon.abilities.map((pokemon) => {
-          return  <Stats key={pokemon.ability.name}>{pokemon.ability.name[0].toUpperCase() + pokemon.ability.name.slice(1)}</Stats>
-        })}</DivStats>
-         <TittleStats>Tipo</TittleStats>
-        <DivStats>{pokemon.types.map((pokemon) => {
-          return <Stats  key={pokemon.type.name}>  {pokemon.type.name[0].toUpperCase() + pokemon.type.name.slice(1)}</Stats>
-        })}</DivStats>
-    
-        </DivStats>
+        <>
+        <DivTittleStats><TittleStats>Tamanho</TittleStats></DivTittleStats>
+        <DivStats><Stats>{pokemon.weight/10}kg</Stats></DivStats>
+        <DivStats><Stats>{pokemon.height/10}m</Stats></DivStats>
+        <DivTittleStats><TittleStats>Habilidade</TittleStats></DivTittleStats>
+        <>{pokemon.abilities.map((pokemon) => {
+          return  <DivStats><Stats>{pokemon.ability.name[0].toUpperCase() + pokemon.ability.name.slice(1)}</Stats></DivStats>
+        })}</>
+         <DivTittleStats><TittleStats>Tipo</TittleStats></DivTittleStats>
+        <>{pokemon.types.map((pokemon) => {
+          return <DivStats><Stats>  {pokemon.type.name[0].toUpperCase() + pokemon.type.name.slice(1)}</Stats></DivStats>
+        })}</>
+        </>
         </DivMain>
       }
     })}
         </CardLeft>
         <CardCenter>
-
      {pokemons.map((pokemon) => {
       if(name === pokemon.name){
-        return <DivCardCenter key={pokemon.id}>
-        <ID>#{addZeroes(pokemon.id, 3)}</ID>
-        <PokeImg src={pokemon.image} alt={pokemon.name} />
-        <Name>{pokemon.name.toUpperCase()}</Name>
-        
-        
+        return <DivCardCenter  key={pokemon.id}>
+        <DivId><ID>#{addZeroes(pokemon.id, 3)}</ID></DivId>
+        <PokeImg src={pokemon.image} alt={pokemon.name}/>
+        <DivName><Name>{pokemon.name.toUpperCase()}</Name></DivName>
+        <DivButton>
+        <Button onClick={() => onClickAdd(pokemon)}>Adicionar</Button>
+        <Button onClick={() => onClickRemover(pokemon)}>Remover</Button>
+        </DivButton>
         </DivCardCenter>  
       }
     })}
-        </CardCenter>
-        
-        <CardRight>
-        
+        </CardCenter> 
+        <CardRight>  
     <RadarChart className='shape'
     captions={captions}
     data={data}
     size={400}
     options={options}
-  />
-        
+    
+  /> 
         </CardRight>
       </Container>
       
-    </div>
+    </>
   );
 }
 
