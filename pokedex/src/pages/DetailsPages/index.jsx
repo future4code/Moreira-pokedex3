@@ -1,12 +1,10 @@
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderDetails from '../../components/HeaderDetails';
 import GlobalStateContext from '../../context/GlobalContext/GlobalStateContext';
 import { CardCenter, ID, Name, DivButton, Button, DivId, DivName, DivTittleStats, CardLeft, DivMain, Stats, DivStats, TittleStats, PokeImg, CardRight, Container, DivCardCenter } from './styeld';
 import RadarChart from 'react-svg-radar-chart';
 import 'react-svg-radar-chart/build/css/index.css'
-import HeaderList from '../../components/HeaderList'
 
 
 function DetailsPages() {
@@ -121,20 +119,18 @@ const onClickAdd = ((pokeToAdd)=>{
         <CardLeft>
         {pokemons.map((pokemon) => {
       if(name === pokemon.name ){
-        return <DivMain>
-        <>
+        return <DivMain key={pokemon.id}>
         <DivTittleStats><TittleStats>Tamanho</TittleStats></DivTittleStats>
         <DivStats><Stats>{pokemon.weight/10}kg</Stats></DivStats>
         <DivStats><Stats>{pokemon.height/10}m</Stats></DivStats>
         <DivTittleStats><TittleStats>Habilidade</TittleStats></DivTittleStats>
         <>{pokemon.abilities.map((pokemon) => {
-          return  <DivStats><Stats>{pokemon.ability.name[0].toUpperCase() + pokemon.ability.name.slice(1)}</Stats></DivStats>
+          return  <DivStats key={pokemon.id}><Stats>{pokemon.ability.name[0].toUpperCase() + pokemon.ability.name.slice(1)}</Stats></DivStats>
         })}</>
          <DivTittleStats><TittleStats>Tipo</TittleStats></DivTittleStats>
         <>{pokemon.types.map((pokemon) => {
-          return <DivStats><Stats>  {pokemon.type.name[0].toUpperCase() + pokemon.type.name.slice(1)}</Stats></DivStats>
+          return <DivStats key={pokemon.id}><Stats>  {pokemon.type.name[0].toUpperCase() + pokemon.type.name.slice(1)}</Stats></DivStats>
         })}</>
-        </>
         </DivMain>
       }
     })}
