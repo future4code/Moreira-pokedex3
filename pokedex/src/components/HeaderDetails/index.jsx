@@ -14,12 +14,7 @@ const HeaderDetails = () => {
     <Button onClick={() => history(-1)}>VOLTAR </Button>
     <Img src={Logo} alt="logo"/>
     <ContainerButtons>
-    <Button> 
-        ADICIONAR
-    </Button>
-    <Button> 
-        REMOVER
-    </Button>
+    <Button onClick={() => history('/pokedex_page')}>MEUS POKEMONS </Button>
     </ContainerButtons>
     </Container>    
     </>
