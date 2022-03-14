@@ -195,6 +195,6 @@ export const PButton = styled.p`
   }
 
   @media screen and (max-width: 412px){
-    font-size: 17px;
+    font-size: 17.5px;
   }
 `
