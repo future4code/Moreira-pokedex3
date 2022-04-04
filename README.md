@@ -25,9 +25,9 @@ Este projeto consiste em criar uma pokedex consumindo uma [API](pokeapi.co), com
 <br/><br/>
 ###  Publicação🎨
 
-Projeto Pokedex publicado na plataform surge:
+Projeto Pokedex publicado na plataforma surge:
 
-#### - [Surge](http://romantic-cobweb.surge.sh/)
+#### - [Link: Pokedex](http://romantic-cobweb.surge.sh/)
 <br/>
 
 ### Requisitos do projeto
